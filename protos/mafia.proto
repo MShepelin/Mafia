@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package mafia;
+
+service MafiaServer {
+  rpc ReceiveUpdates (UpdatesRequest) returns (stream Update) {}
+
+  rpc FindGame(GameRequest) returns (GameSearchResponse) {}
+
+  rpc SendChatMessage(ChatMessageRequest) returns (RequestProcessStatus) {}
+
+  rpc LeaveGame(GameRequest) returns (RequestProcessStatus) {}
+}
+
+message UpdatesRequest {
+  int32 user_id = 1;
+}
+
+message GameRequest {
+  int32 user_id = 1;
+}
+
+message GameSearchResponse {
+  int32 game_id = 1;
+}
+
+message ChatMessageRequest {
+  int32 user_id = 1;
+  string message = 2;
+}
+
+message RequestProcessStatus {
+  bool is_status_ok = 1;
+}
+
+message Update {
+  string message = 1;
+  enum UpdateStatus {
+    NEW_USER = 0;
+    NEW_MESSAGE = 1;
+    USERS_LIST = 2;
+  }
+  UpdateStatus update_code = 2;
+}

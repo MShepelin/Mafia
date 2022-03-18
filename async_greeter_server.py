@@ -17,21 +17,21 @@ import asyncio
 import logging
 
 import grpc
-import helloworld_pb2
-import helloworld_pb2_grpc
+import mafia_pb2
+import mafia_pb2_grpc
 
 
-class Greeter(helloworld_pb2_grpc.GreeterServicer):
-
-    async def SayHello(
-            self, request: helloworld_pb2.HelloRequest,
-            context: grpc.aio.ServicerContext) -> helloworld_pb2.HelloReply:
-        return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
+class MafiaServer(mafia_pb2_grpc.MafiaServerServicer):
+    async def SendChatMessage(
+            self, request: mafia_pb2.ChatMessageRequest,
+            context: grpc.aio.ServicerContext) -> mafia_pb2.RequestProcessStatus:
+        print("user", request.user_id, "sent", request.message)
+        return mafia_pb2.RequestProcessStatus(is_status_ok=True)
 
 
 async def serve() -> None:
     server = grpc.aio.server()
-    helloworld_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
+    mafia_pb2_grpc.add_MafiaServerServicer_to_server(MafiaServer(), server)
     listen_addr = '[::]:50051'
     server.add_insecure_port(listen_addr)
     logging.info("Starting server on %s", listen_addr)
