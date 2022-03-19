@@ -22,6 +22,7 @@ message GameRequest {
 
 message GameSearchResponse {
   int32 game_id = 1;
+  bool is_status_ok = 2;
 }
 
 message ChatMessageRequest {
@@ -39,6 +40,9 @@ message Update {
     NEW_USER = 0;
     NEW_MESSAGE = 1;
     USERS_LIST = 2;
+    GAME_SEARCH_START = 3;
+    GAME_SEARCH_FINISH = 4;
+    NOTHING = 5;
   }
   UpdateStatus update_code = 2;
 }

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0bmafia.proto\x12\x05mafia\"!\n\x0eUpdatesRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\"\x1e\n\x0bGameRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\"%\n\x12GameSearchResponse\x12\x0f\n\x07game_id\x18\x01 \x01(\x05\"6\n\x12\x43hatMessageRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\",\n\x14RequestProcessStatus\x12\x14\n\x0cis_status_ok\x18\x01 \x01(\x08\"\x89\x01\n\x06Update\x12\x0f\n\x07message\x18\x01 \x01(\t\x12/\n\x0bupdate_code\x18\x02 \x01(\x0e\x32\x1a.mafia.Update.UpdateStatus\"=\n\x0cUpdateStatus\x12\x0c\n\x08NEW_USER\x10\x00\x12\x0f\n\x0bNEW_MESSAGE\x10\x01\x12\x0e\n\nUSERS_LIST\x10\x02\x32\x93\x02\n\x0bMafiaServer\x12:\n\x0eReceiveUpdates\x12\x15.mafia.UpdatesRequest\x1a\r.mafia.Update\"\x00\x30\x01\x12;\n\x08\x46indGame\x12\x12.mafia.GameRequest\x1a\x19.mafia.GameSearchResponse\"\x00\x12K\n\x0fSendChatMessage\x12\x19.mafia.ChatMessageRequest\x1a\x1b.mafia.RequestProcessStatus\"\x00\x12>\n\tLeaveGame\x12\x12.mafia.GameRequest\x1a\x1b.mafia.RequestProcessStatus\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0bmafia.proto\x12\x05mafia\"!\n\x0eUpdatesRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\"\x1e\n\x0bGameRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\";\n\x12GameSearchResponse\x12\x0f\n\x07game_id\x18\x01 \x01(\x05\x12\x14\n\x0cis_status_ok\x18\x02 \x01(\x08\"6\n\x12\x43hatMessageRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\",\n\x14RequestProcessStatus\x12\x14\n\x0cis_status_ok\x18\x01 \x01(\x08\"\xc5\x01\n\x06Update\x12\x0f\n\x07message\x18\x01 \x01(\t\x12/\n\x0bupdate_code\x18\x02 \x01(\x0e\x32\x1a.mafia.Update.UpdateStatus\"y\n\x0cUpdateStatus\x12\x0c\n\x08NEW_USER\x10\x00\x12\x0f\n\x0bNEW_MESSAGE\x10\x01\x12\x0e\n\nUSERS_LIST\x10\x02\x12\x15\n\x11GAME_SEARCH_START\x10\x03\x12\x16\n\x12GAME_SEARCH_FINISH\x10\x04\x12\x0b\n\x07NOTHING\x10\x05\x32\x93\x02\n\x0bMafiaServer\x12:\n\x0eReceiveUpdates\x12\x15.mafia.UpdatesRequest\x1a\r.mafia.Update\"\x00\x30\x01\x12;\n\x08\x46indGame\x12\x12.mafia.GameRequest\x1a\x19.mafia.GameSearchResponse\"\x00\x12K\n\x0fSendChatMessage\x12\x19.mafia.ChatMessageRequest\x1a\x1b.mafia.RequestProcessStatus\"\x00\x12>\n\tLeaveGame\x12\x12.mafia.GameRequest\x1a\x1b.mafia.RequestProcessStatus\"\x00\x62\x06proto3'
 )
 
 
@@ -46,11 +46,26 @@ _UPDATE_UPDATESTATUS = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GAME_SEARCH_START', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GAME_SEARCH_FINISH', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='NOTHING', index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=307,
-  serialized_end=368,
+  serialized_start=329,
+  serialized_end=450,
 )
 _sym_db.RegisterEnumDescriptor(_UPDATE_UPDATESTATUS)
 
@@ -134,6 +149,13 @@ _GAMESEARCHRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='is_status_ok', full_name='mafia.GameSearchResponse.is_status_ok', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -147,7 +169,7 @@ _GAMESEARCHRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=89,
-  serialized_end=126,
+  serialized_end=148,
 )
 
 
@@ -185,8 +207,8 @@ _CHATMESSAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=128,
-  serialized_end=182,
+  serialized_start=150,
+  serialized_end=204,
 )
 
 
@@ -217,8 +239,8 @@ _REQUESTPROCESSSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=184,
-  serialized_end=228,
+  serialized_start=206,
+  serialized_end=250,
 )
 
 
@@ -257,8 +279,8 @@ _UPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=231,
-  serialized_end=368,
+  serialized_start=253,
+  serialized_end=450,
 )
 
 _UPDATE.fields_by_name['update_code'].enum_type = _UPDATE_UPDATESTATUS
@@ -322,8 +344,8 @@ _MAFIASERVER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=371,
-  serialized_end=646,
+  serialized_start=453,
+  serialized_end=728,
   methods=[
   _descriptor.MethodDescriptor(
     name='ReceiveUpdates',
